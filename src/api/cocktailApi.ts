@@ -15,6 +15,14 @@ export const getCockTailsByCategory = async (category: string) => {
     const { data } = await cocktailApi.get(`/filter.php?c=${category}`);
     return data;
 }
+export const getCockTailsByIngredient = async (ingredient: string) => {
+    const { data } = await cocktailApi.get(`/filter.php?i=${ingredient}`);
+    return data;
+}
+export const getCockTailsByName = async (name: string) => {
+    const { data } = await cocktailApi.get(`/search.php?s=${name}`);
+    return data;
+}
 
 export const getCockTailById = async (id: string) => {
     const { data } = await cocktailApi.get(`/lookup.php?i=${id}`);

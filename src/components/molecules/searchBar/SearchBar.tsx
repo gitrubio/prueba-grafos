@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function BarSearch() {
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
   return (
-    <form className="max-w-xl w-auto md:w-[400px]">
+    <form className="max-w-xl w-auto md:w-[400px]" onSubmit={(e)=> {
+      e.preventDefault();
+     if(!search) return navigate(`/`); 
+      navigate(`/search/${search}`);
+    }}>
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -29,10 +37,10 @@ export default function BarSearch() {
         </div>
         <input
           type="search"
-          id="default-search"
+          value={search}
           className="block w-full h-12 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Search Mockups, Logos..."
-        
+          placeholder="Search Cocktails, Drinks..."
+          onChange={(e) => setSearch(e.target.value)}
         />
        
       </div>

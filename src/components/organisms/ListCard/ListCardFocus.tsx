@@ -4,16 +4,19 @@ import { useState } from "react";
 
 interface ListCardFocusProps {
   cocktails: Cocktail[];
+  className?: string;
+  itemClassName?: string;
 }
 
-export function ListCardFocus({ cocktails }: ListCardFocusProps) {
+export function ListCardFocus({ cocktails, className , itemClassName}: ListCardFocusProps) {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-6 p-6">
+    <div className={className}>
       {cocktails.map((cocktail, index) => (
         <CardFocus
-         key={cocktail.idDrink}
+          className={itemClassName ?? 'h-96 max-w-96 md:max-h-96 md:max-w-96'}
+          key={cocktail.idDrink}
           cocktail={cocktail}
           index={index}
           hovered={hovered}

@@ -1,7 +1,6 @@
 import BigLoader from "@/components/molecules/loader/BigLoader";
-import { cn } from "@/helpers/utils";
+import IngredientSection from "@/components/organisms/IngredientSection/IngredientSection";
 import { useInfoCocktail } from "@/hooks/useInfoCocktail";
-import { Radio, RadioGroup } from "@headlessui/react";
 import { useParams } from "react-router-dom";
 
 export function CockTailView() {
@@ -49,9 +48,9 @@ export function CockTailView() {
           </ol>
         </nav>
         {/* Product info */}
-        <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
-          <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8 flex flex-col items-center">
-            <div className="w-[500px] h-[500px]   overflow-hidden rounded-lg lg:block">
+        <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16 ">
+          <div className="max-w-2xl lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8 flex flex-col items-center ">
+            <div className="w-[500px] h-[500px] overflow-hidden rounded-lg lg:block">
               {!cocktail?.strDrinkThumb && (
                 <svg
                   viewBox="0 0 16 20"
@@ -74,54 +73,25 @@ export function CockTailView() {
             <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
               {cocktail?.strDrink}
             </h1>
+            <div className="py-10 lg:col-span-2 lg:col-start-1  lg:pb-16 lg:pr-8 lg:pt-6">
+              {/* Description and details */}
+              <div>
+                <h3 className="sr-only">Description</h3>
+
+                <div className="space-y-6">
+                  <p className="text-base text-gray-900">
+                    {cocktail?.strInstructions}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Ingredients */}
-          <div >
-            <div className="mt-1">
-              <div className="flex items-start justify-center">
-                <h3 className="text-sm font-medium text-gray-900">
-                  Ingredients
-                </h3>
-              </div>
-              <div className="flex items-center mt-4">
-                <RadioGroup className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2 ">
-                  
-                  {cocktail?.ingredients.map((item) => (
-                    <Radio
-                      key={item.ingredient}
-                      value={item.ingredient}
-                      className={cn(
-                        "cursor-pointer bg-white text-gray-900 shadow-sm",
-                        "group relative w-48 h-48 flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none data-[focus]:ring-2 data-[focus]:ring-indigo-500 sm:flex-1 sm:py-6"
-                      )}
-                    >
-                      <img
-                        src={
-                          `https://www.thecocktaildb.com/images/ingredients/${item.ingredient}.png`
-                        }
-                        className="object-cover object-center w-full h-full"
-                      />
-                      
-                    </Radio>
-                  ))}
-                </RadioGroup>
-              </div>
-            </div>
-          </div>
-
-          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
-            {/* Description and details */}
-            <div>
-              <h3 className="sr-only">Description</h3>
-
-              <div className="space-y-6">
-                <p className="text-base text-gray-900">
-                  {cocktail?.strInstructions}
-                </p>
-              </div>
-            </div>
-          </div>
+          <IngredientSection
+            ingredients={cocktail?.ingredients ?? []}
+            key={"section-over-ingredients"}
+          />
         </div>
       </div>
     </div>

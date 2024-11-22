@@ -32,7 +32,7 @@ export const getIngredientsWithMeasures = (cocktail: Cocktail) => {
         if (!ingredient) return null; // Ignorar si el ingrediente es null
         return {
           ingredient: ingredient.trim(),
-          measure: measures[index]?.trim() || "To taste", // Medida opcional
+          measure: measures[index]?.trim() || "", // Medida opcional
         };
       })
       .filter(Boolean); // Filtrar los nulos
