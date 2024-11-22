@@ -15,3 +15,8 @@ export const getCockTailsByCategory = async (category: string) => {
     const { data } = await cocktailApi.get(`/filter.php?c=${category}`);
     return data;
 }
+
+export const getCockTailById = async (id: string) => {
+    const { data } = await cocktailApi.get(`/lookup.php?i=${id}`);
+    return data;
+}

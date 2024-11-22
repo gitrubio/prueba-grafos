@@ -1,5 +1,5 @@
 import NavBar from "@/components/organisms/navBar/NavBar";
-import { Homeview } from "@/views";
+import { CockTailView, Homeview } from "@/views";
 import { Route, Routes } from "react-router-dom";
 
 export default function PublicRoutes() {
@@ -8,6 +8,7 @@ export default function PublicRoutes() {
       <NavBar />
       <Routes>
         <Route path="" element={<Homeview/>} />
+        <Route path="/cocktail/:id" element={<CockTailView/>} />
       </Routes>
     </div>
   );

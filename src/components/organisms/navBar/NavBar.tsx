@@ -3,15 +3,16 @@ import UserSection from "../../molecules/userSection/UserSection";
 import { useAuthStore } from "@/hooks/useAuthStore";
 import { AuthenticationStatus } from "@/store/auth/types";
 import BarSearch from "@/components/molecules/searchBar/SearchBar";
-
+import { NavLink } from "react-router-dom";
 export default function NavBar() {
   const { status, user, handledLogout } = useAuthStore();
+  
   return (
     <nav className="bg-transparent border-gray-200 shadow-sm dark:bg-gray-900 w-full border-b-2 min-h-20">
       <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <NavLink to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
-            src="images/logo.png"
+            src={"/images/logo.png"}
             className="h-28 absolute"
             alt="logo of the project"
           />
@@ -21,7 +22,7 @@ export default function NavBar() {
               <span className="text-[#70B852]">Beer</span>
             </span>
           </div>
-        </a>
+        </NavLink>
         <div className="flex flex-row items-center gap-3 w-auto" id="navbar-default">
           <BarSearch />
           {status === AuthenticationStatus.authenticated ? (
