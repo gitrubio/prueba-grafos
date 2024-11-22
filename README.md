@@ -1,50 +1,113 @@
-# React + TypeScript + Vite
+# Prueba tecnica front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción del Proyecto
+Este proyecto es una aplicación web desarrollada en React con integración de Tailwind CSS. El objetivo del proyecto es proporcionar una web para un restaurante de cocteles
+## Tecnologías del Proyecto
+### Principales
 
-Currently, two official plugins are available:
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> 
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" 
+alt="typescript" width="40" height="40"/>
+<img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/>
+<img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/>
+<img src="https://www.vectorlogo.zone/logos/axios/axios-icon.svg" alt="tailwind" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vite/vite-original.svg" alt="vitw" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="vitw" width="40" height="40"/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: Biblioteca de JavaScript para construir interfaces de usuario. 
+- **Tailwind CSS**: Framework de CSS para diseñar interfaces modernas utilizando utilidades de clase.
+- **Vite**: Herramienta de construcción rápida para proyectos React.
+- **Firebase**:  para gestionar la autenticación de usuarios.
+- **TypeScript**: Como lenguaje se uso para un mayor control en la entrada y salida de datos. 
+- **axios**: para realizar las solicitudes HTTP al backend, permitiendo una gestión eficiente de las peticiones y respuestas. 
+- **git**: para el control de versiones, lo que permite realizar un seguimiento de los cambios en el código. 
 
-## Expanding the ESLint configuration
+### Secundarias
+<img src="https://www.vectorlogo.zone/logos/eslint/eslint-icon.svg" alt="eslint" width="40" height="40"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postcss/postcss-original.svg" alt="vitw" height="40"/>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **ESLint**: Herramienta para mantener un código limpio y consistente.
+- **Prettier**: Formateador de código para garantizar un estilo uniforme.
+- **PostCSS**: Utilizado para procesar estilos CSS con Tailwind.
 
-- Configure the top-level `parserOptions` property like this:
+## Instrucciones de Arranque y Configuración
+### Requisitos previos
+- **Node.js** (versión 16 o superior).
+- **npm** o **yarn** instalado.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Pasos
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/usuario/prueba_tecnica_front.git
+   cd nombre-del-proyecto
+   ```
+ Instalar dependencias:
+
+ ```bash
+npm install
+```
+ o con Yarn:
+
+```bash
+yarn install
+```
+2. **Configurar variables de entorno**:
+
+Crea un archivo .env en la raíz del proyecto.
+Agrega las variables necesarias según example.env.
+Iniciar el proyecto en modo desarrollo:
+
+```bash
+npm run dev
+```
+o con Yarn:
+
+```bash
+yarn dev
+```
+Abrir en el navegador:
+
+El proyecto estará disponible en http://localhost:5173. 
+Scripts Disponibles
+```bash
+npm run dev: Inicia el servidor en modo desarrollo.
+npm run build: Genera una versión optimizada del proyecto.
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. **Instalar Plugins de Tailwind:**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Ejemplo: Para agregar soporte a una minilibreria de componentes:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install @headlessui/tailwindcss
+npm install tailwindcss-animate
 ```
+Y agrégalo al archivo de configuración:
+```javascript
+module.exports = {
+  plugins: [require("tailwindcss-animate"),require('@headlessui/tailwindcss')],
+};
+```
+
+**Estructura del proyecto:**
+```css
+src/
+│── api/
+│   ├── authApi.tsx
+│   ├── cockApi.tsx
+├── components/
+│   ├── molecules/
+│   │   ├── Header.tsx
+│   │   ├── Button.tsx
+│   ├── organisms/
+│   │   ├── Navbar.tsx
+│   │   ├── UserSection.tsx
+├── views/
+│   ├── Home.tsx
+│   └── About.tsx
+├── App.tsx
+└── main.tsx
+```
+Autor
+[Carlos Rubio]
+[carloviloria0@gmail.com]

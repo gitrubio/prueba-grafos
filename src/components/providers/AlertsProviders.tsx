@@ -1,7 +1,7 @@
 import { useAlertStore } from '@/hooks/useAlertStore';
 import { FaExclamationCircle, FaExclamationTriangle, FaInfoCircle } from 'react-icons/fa';
 
-// Este componente se encarga de mostrar las alertas en la aplicación
+// Este componente se encarga de mostrar las alertas en la aplicación de forma global
 const AlertProvider = () => {
   const { alerts, handleRemoveAlert } = useAlertStore();
   const alertIcon = (type: "success" | "error" | "warning" | "info") =>{

@@ -21,7 +21,7 @@ export const generateInitials = (name: string): string => {
     return initials;
 };
 
-
+// Función para obtener los ingredientes con sus medidas de un coctel
 export const getIngredientsWithMeasures = (cocktail: Cocktail) => {
     const ingredients = Array.from({ length: 15 }, (_, i) => cocktail[`strIngredient${i + 1}` as keyof Cocktail]);
     const measures = Array.from({ length: 15 }, (_, i) => cocktail[`strMeasure${i + 1}` as keyof Cocktail]);

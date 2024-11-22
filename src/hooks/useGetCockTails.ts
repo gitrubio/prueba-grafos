@@ -18,7 +18,7 @@ export const useGetCockTails= () => {
         
        }
     }
-
+    // Función para obtener los cócteles por categoría
     const getCockTailsCategory = async (category: string) => {
         try {
          const data  = await getCockTailsByCategory(category);
@@ -28,7 +28,7 @@ export const useGetCockTails= () => {
          console.log('Error al obtener los cócteles:', error);
     }
     }
-    
+    // Función para obtener los cócteles por ingrediente
     const getCockTailsIngredient = async (ingredient: string) => {
         try {
          const data  = await getCockTailsByIngredient(ingredient);
@@ -38,7 +38,7 @@ export const useGetCockTails= () => {
          console.log('Error al obtener los cócteles:', error);
     }
     }
-    
+    // Función para obtener los cócteles por nombre
     const getCockTailsName = async (ingredient: string) => {
         try {
          const data  = await getCockTailsByName(ingredient);

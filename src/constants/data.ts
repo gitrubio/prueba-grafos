@@ -1,3 +1,5 @@
+
+// categorias de bebidas
 export const CategoryData = [
     "Cocktail",
     "Ordinary Drink",

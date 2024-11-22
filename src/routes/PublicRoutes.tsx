@@ -6,7 +6,7 @@ import { IngredientView } from '../views/IngredientView';
 export default function PublicRoutes() {
   return (
     <div>
-      <NavBar />
+      <NavBar /> // componente de navegación
       <Routes>
         <Route path="" element={<Homeview/>} />
         <Route path="/cocktail/:id" element={<CockTailView/>} />
