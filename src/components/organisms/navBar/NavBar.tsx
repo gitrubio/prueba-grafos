@@ -1,14 +1,14 @@
-import NotUserSection from "@/components/molecules/userSection/NotUserSection";
-import UserSection from "../../molecules/userSection/UserSection";
+import NotUserSection from "@/components/molecules/UserSection/NotUserSection";
+import UserSection from "../../molecules/UserSection/UserSection";
 import { useAuthStore } from "@/hooks/useAuthStore";
 import { AuthenticationStatus } from "@/store/auth/types";
-import BarSearch from "@/components/molecules/searchBar/SearchBar";
+import BarSearch from "@/components/molecules/SearchBar/SearchBar";
 import { NavLink } from "react-router-dom";
 export default function NavBar() {
   const { status, user, handledLogout } = useAuthStore();
   
   return (
-    <nav className="bg-transparent border-gray-200 shadow-sm dark:bg-gray-900 w-full border-b-2 min-h-20">
+    <nav className="bg-transparent border-gray-200 shadow-sm dark:bg-gray-900 w-full border-b-2 min-h-20 transition-all ease-in-out">
       <div className=" flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img

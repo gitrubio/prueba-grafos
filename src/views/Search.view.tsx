@@ -2,12 +2,12 @@ import BigLoader from '@/components/molecules/loader/BigLoader';
 import { ListCardFocus } from '@/components/organisms/ListCard/ListCardFocus'
 import { useGetCockTails } from '@/hooks/useGetCockTails';
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export  function SearchView() {
     const { item } = useParams();
     const { cocktails,  getCockTailsName, loading } = useGetCockTails();
-
+    const navigate = useNavigate()
     useEffect(() => {
         getCockTailsName(item ?? '');
     }, [item]);
@@ -20,14 +20,7 @@ export  function SearchView() {
         );
       }
 
-    if (cocktails.length === 0) {
-        return (
-          <div className="w-full h-screen flex justify-center items-center">
-            <h1 className="text-4xl">No results found</h1>
-          </div>
-        );
-        
-    }
+    if (cocktails.length === 0) navigate('/404')
 
   return (
     <section className="flex flex-col">

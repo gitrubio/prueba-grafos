@@ -12,6 +12,7 @@ export const useGetCockTails= () => {
        try {
         const data  = await getCockTailsByAlcoholic(Alcoholic);
         setCocktails(data.drinks ?? []);
+        setLoading(false);
        } catch (error) {
         console.log('Error al obtener los cócteles:', error);
         
@@ -22,6 +23,7 @@ export const useGetCockTails= () => {
         try {
          const data  = await getCockTailsByCategory(category);
          setCocktails(data.drinks ?? []);
+         setLoading(false);
         } catch (error) {
          console.log('Error al obtener los cócteles:', error);
     }

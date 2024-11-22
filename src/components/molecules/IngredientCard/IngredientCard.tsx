@@ -9,7 +9,7 @@ interface IngredientCardProps {
 export default function IngredientCard({ingredient,measure} : IngredientCardProps) {
     const navigate = useNavigate()
   return (
-    <div className="hover:text-[#70B852]">
+    <div className="hover:text-[#70B852] transition-all ease-in-out hover:scale-105">
       <Radio
         onClick={()=> navigate(`/ingredient/${ingredient}`)}
         key={ingredient}
