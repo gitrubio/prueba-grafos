@@ -1,4 +1,4 @@
-import SimpleButton from "@/components/molecules/SimpleButton/SimpleButton";
+import SimpleButton from "@/components/molecules/simpleButton/SimpleButton";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 

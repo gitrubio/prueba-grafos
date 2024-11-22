@@ -1,4 +1,4 @@
-import IngredientCard from "@/components/molecules/IngredientCard/IngredientCard";
+import IngredientCard from "@/components/molecules/ingredientCard/IngredientCard";
 import { RadioGroup } from "@headlessui/react";
 
 interface IngredientsProps {

@@ -1,4 +1,4 @@
-import { CardFocus } from "@/components/molecules/CardFocus/CardFocus";
+import { CardFocus } from "@/components/molecules/cardFocus/CardFocus";
 import { Cocktail } from "@/types/cocktail.types";
 import { useState } from "react";
 

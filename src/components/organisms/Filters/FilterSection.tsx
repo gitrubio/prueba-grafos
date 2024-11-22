@@ -1,4 +1,4 @@
-import CategorySelect from '@/components/molecules/CategorySelect/CategorySelect'
+import CategorySelect from '@/components/molecules/categorySelect/CategorySelect'
 
 interface FilterSectionProps {
     handleCategory: (category: string | null) => void;

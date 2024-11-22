@@ -1,4 +1,4 @@
-import ImgProduct from "@/components/molecules/ImgProduct/ImgProduct";
+import ImgProduct from "@/components/molecules/imgProduct/ImgProduct";
 import BigLoader from "@/components/molecules/loader/BigLoader";
 import IngredientSection from "@/components/organisms/IngredientSection/IngredientSection";
 import ScrollToTop from "@/hooks/useCrollToTop";
@@ -9,7 +9,7 @@ export function CockTailView() {
   const { id } = useParams();
   const { cocktail, loading } = useInfoCocktail(id);
   ScrollToTop()
-  
+
   if (loading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">

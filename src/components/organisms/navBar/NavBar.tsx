@@ -1,10 +1,10 @@
 
-import UserSection from "../../molecules/UserSection/UserSection";
-import NotUserSection from "../../molecules/UserSection/NotUserSection";
 import { useAuthStore } from "@/hooks/useAuthStore";
 import { AuthenticationStatus } from "@/store/auth/types";
-import BarSearch from "../../molecules/SearchBar/SearchBar";
 import { NavLink } from "react-router-dom";
+import UserSection from "@/components/molecules/userSection/UserSection";
+import NotUserSection from "@/components/molecules/userSection/NotUserSection";
+import BarSearch from "@/components/molecules/searchBar/SearchBar";
 export default function NavBar() {
   const { status, user, handledLogout } = useAuthStore();
   

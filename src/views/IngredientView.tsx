@@ -1,4 +1,4 @@
-import ImgProduct from '@/components/molecules/ImgProduct/ImgProduct';
+import ImgProduct from '@/components/molecules/imgProduct/ImgProduct';
 import BigLoader from '@/components/molecules/loader/BigLoader';
 import { ListCardFocus } from '@/components/organisms/ListCard/ListCardFocus';
 import { useGetCockTails } from '@/hooks/useGetCockTails';
