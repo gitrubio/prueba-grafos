@@ -18,7 +18,7 @@ export default function RegisterForm({
 
   return (
     <form
-      className="space-y-4 md:space-y-6"
+      className="space-y-4 md:space-y-3"
       onSubmit={(e) => {
         e.preventDefault();
         onRegister(name, email, password,confirmedPassword)
@@ -136,6 +136,7 @@ export default function RegisterForm({
           Login here
         </NavLink>
       </p>
+      <NavLink to={"/"} className="flex flex-row items-center gap-2 w-full justify-center font-medium text-[#70B852] hover:underline dark:text-[#70B852]">Go Home</NavLink>
     </form>
   );
 }

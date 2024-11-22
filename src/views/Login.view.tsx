@@ -3,6 +3,7 @@ import LoginForm from "@/components/organisms/LoginForm/LoginForm";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { useAuthStore } from "@/hooks/useAuthStore";
 import  { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export function LoginView() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -22,14 +23,14 @@ export function LoginView() {
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 ">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a
-          href="#"
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+      <div className="flex flex-col items-center justify-start px-6 py-4 mx-auto md:h-screen lg:py-0">
+        <NavLink
+          to="/"
+          className="flex items-center mb-2 text-2xl font-semibold text-gray-900 dark:text-white"
         >
           <img alt="  Drinks Store" src={"images/logo.png"} className="h-52 w-auto" />
         
-        </a>
+        </NavLink>
         <LoginForm loading={loading} onLogin={onLogin} />
       </div>
     </section>

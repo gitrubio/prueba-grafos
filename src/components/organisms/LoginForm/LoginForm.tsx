@@ -15,7 +15,8 @@ export default function LoginForm({loading,onLogin}: LoginFormProps) {
 
   return (
     <div className="w-full bg-white rounded-lg shadow-xl dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+    <div className="p-6 space-y-3 md:space-y-3 sm:p-8">
+   
         <h1 className="flex text-xl font-bold leading-tight tracking-tight justify-center text-gray-900 md:text-2xl dark:text-white">
             Login to your account
         </h1>
@@ -41,6 +42,9 @@ export default function LoginForm({loading,onLogin}: LoginFormProps) {
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                You don't have an account? <NavLink to={"/register"} className="font-medium text-[#70B852] hover:underline dark:text-[#70B852]">Register here</NavLink>
             </p>
+ 
+           <NavLink to={"/"} className="flex flex-row items-center gap-2 w-full justify-center font-medium text-[#70B852] hover:underline dark:text-[#70B852]">Go Home</NavLink>
+      
         </form>
     </div>
 </div>
