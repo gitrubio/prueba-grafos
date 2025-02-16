@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/store";
 import { changeNode, changeTree, setError, setLoading } from "@/store/minecraft/slices/minecraftSlice";
 import { normalizeTree } from "@/helpers/utils";
-import { MinecraftSkillTree } from "@/types/global.types";
+import { MinecraftSkillTree, NodePrimary } from "@/types/global.types";
 import { DEFAULT_URL } from "@/constants/data";
 import useSound from 'use-sound';
 import xp from '@/assets/sounds/din.mp3';
@@ -17,7 +17,7 @@ export const useMinecraftSkillTree = () => {
 
       dispatch(setLoading(true));
       
-      const data = await mineCraftApi.get(url);
+      const data = await mineCraftApi.get<NodePrimary>(url);
     
       const normalizedData = normalizeTree(data);
     

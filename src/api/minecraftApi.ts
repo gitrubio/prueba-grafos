@@ -1,39 +1,16 @@
 import { isProduction } from "@/constants/data";
 
-class MinecraftApi {
-    private static instance: MinecraftApi;
-  
-    private constructor() {}
-  
-    static getInstance(): MinecraftApi {
-      if (!MinecraftApi.instance) {
-        MinecraftApi.instance = new MinecraftApi();
-      }
-      return MinecraftApi.instance;
-    }
+export const mineCraftApi = {
     
-    private getApiUrl(url: string) {
-      if (isProduction) {
-        return  `/.netlify/functions/proxy?url=${encodeURIComponent(url)}`;
-      }
-  
-      return url;
+    async get<T>(url: string): Promise<T> {
+        const endpoint = isProduction
+        ? "/.netlify/functions/proxy?url=" + encodeURIComponent(url)
+        : url;
+    
+        const response = await fetch(endpoint);
+        if (!response.ok) throw new Error("Error fetching data");
+        return await response.json() as T;
+     
     }
 
-    async get(url: string) {
-      try {
-        const response = await fetch(this.getApiUrl(url), { method: "GET" });
-  
-        if (!response.ok) {
-          throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
-        }
-  
-        return await response.json();
-      } catch (error) {
-        console.error("Fetch error:", error);
-        return null;
-      }
-    }
-  }
-
-  export const mineCraftApi = MinecraftApi.getInstance();
+}
