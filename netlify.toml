@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "/BaseSkillTree.json"
-  to = "https://minecraft.capta.co/BaseSkillTree.json"
-  status = 200
-  force = true
