@@ -1,35 +1,119 @@
+/* xyflow theme files. Delete these to start from our base */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@keyframes slide-animation {
-    0% {
-      transform: translateX(12rem) rotate(12deg);
-      opacity: 0.1;
-    }
-    50% {
-      transform: translateX(-32rem) rotate(12deg);
-      opacity: 0.3;
-    }
-    100% {
-      transform: translateX(12rem) rotate(12deg);
-      opacity: 0.1;
-    }
-  }
-@keyframes meteor {
-    0% {
-      transform: rotate(215deg) translateX(0);
-      opacity: 1;
-    }
-    70% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(215deg) translateX(-500px);
-      opacity: 0;
-    }
+body {
+  color : white;
+  font-family: Minecraftia, sans-serif; 
+  background-color: #979797;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#minecraft-main {
+  background-image: url('./assets/Background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.react-flow {
+  /* Custom Variables */
+  --xy-theme-selected: #F57DBD;
+  --xy-theme-hover: #C5C5C5;
+  --xy-theme-edge-hover: transparent;
+  --xy-theme-color-focus: #E8E8E8;
+  --xy-edge-stroke-width: 6px;
+  --xy-edge-stroke: white;
+  --xy-edge-border: 2px solid black;
+  /* Built-in Variables see https://reactflow.dev/learn/customization/theming */
+  --xy-node-border-default: 1px solid #EDEDED;
+
+  --xy-node-boxshadow-default: 
+    0px 3.54px 4.55px 0px #00000005, 
+    0px 3.54px 4.55px 0px #0000000D, 
+    0px 0.51px 1.01px 0px #0000001A;
+
+  --xy-node-border-radius-default: 8px;
+
+  --xy-handle-background-color-default: #ffffff;
+  --xy-handle-border-color-default: #AAAAAA;
+
+  --xy-edge-label-color-default: #ffffff;
+}
+
+.react-flow.dark { 
+  --xy-node-boxshadow-default: 
+  0px 3.54px 4.55px 0px rgba(255, 255, 255, 0.05), /* light shadow */
+  0px 3.54px 4.55px 0px rgba(255, 255, 255, 0.13), /* medium shadow */
+  0px 0.51px 1.01px 0px rgba(255, 255, 255, 0.2);  /* smallest shadow */  
+  --xy-theme-color-focus: #535353;
+}
+
+/* Customizing Default Theming */
+
+.react-flow__node {
+  border-radius: var(--xy-node-border-radius-default);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+  width: 60px;
+  height: 66px;
+  z-index: 1 !important;
+  flex-direction: column;
+  border: 3px;
+  border-style: solid;
+  background-color: rgb(196, 196, 196);
+  border-color: white rgb(85, 85, 85) rgb(85, 85, 85) white;
+}
+
+
+
+.react-flow__node.node-completed {
+    border-color: rgb(220, 164, 20) rgb(73, 54, 6) rgb(73, 54, 6) rgb(220, 164, 20) ;
+    background-color: rgb(172, 124, 12);
   }
 
-  html {
-    overflow-y: scroll;
+
+.react-flow__node.selectable:hover, 
+.react-flow__node.draggable:hover {
+  cursor: default;
+  #description {
+    display: block;
   }
+}
+
+
+
+
+
+.react-flow__edge {
+  border: var(--xy-edge-border);
+} 
+
+
+
+.react-flow__handle {
+  pointer-events: none;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+
+
+.react-flow__node-resizer {
+  border-radius: 0;
+  border: none;
+}
+
+.react-flow__resize-control.handle {
+  background-color: #ffffff;
+  border-color: #9E86ED;
+  border-radius: 0;
+  width: 5px;
+  height: 5px;
+}

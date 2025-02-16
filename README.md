@@ -1,25 +1,23 @@
 # Prueba tecnica front-end
 
 ## Descripción del Proyecto
-Este proyecto es una aplicación web desarrollada en React con integración de Tailwind CSS. El objetivo del proyecto es proporcionar una web para un restaurante de cocteles
+Este proyecto es una web desarrollada en React con integración de Tailwind CSS y Redux. El objetivo del proyecto es mostrar,organizar y editar un arbol de habilidades de minecraft basandonos en grafos.
 ## Tecnologías del Proyecto
 ### Principales
 
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> 
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" 
 alt="typescript" width="40" height="40"/>
-<img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/>
 <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/>
-<img src="https://www.vectorlogo.zone/logos/axios/axios-icon.svg" alt="tailwind" width="40" height="40"/>
+<img src="https://www.vectorlogo.zone/logos/js_redux/js_redux-icon.svg" alt="redux" width="40" height="40"/>
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vite/vite-original.svg" alt="vitw" width="40" height="40"/>
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="vitw" width="40" height="40"/>
 
 - **React**: Biblioteca de JavaScript para construir interfaces de usuario. 
-- **Tailwind CSS**: Framework de CSS para diseñar interfaces modernas utilizando utilidades de clase.
+- **Tailwind CSS**: Framework de CSS para diseñar interfaces modernas utilizando utilizdades de clase.
+- **Redux**: Una biblioteca de manejo de estado global para aplicaciones.
 - **Vite**: Herramienta de construcción rápida para proyectos React.
-- **Firebase**:  para gestionar la autenticación de usuarios.
 - **TypeScript**: Como lenguaje se uso para un mayor control en la entrada y salida de datos. 
-- **axios**: para realizar las solicitudes HTTP al backend, permitiendo una gestión eficiente de las peticiones y respuestas. 
 - **git**: para el control de versiones, lo que permite realizar un seguimiento de los cambios en el código. 
 
 ### Secundarias
@@ -38,8 +36,8 @@ alt="typescript" width="40" height="40"/>
 ### Pasos
 1. **Clonar el repositorio**:
    ```bash
-   git clone https://github.com/usuario/prueba_tecnica_front.git
-   cd nombre-del-proyecto
+   git clone https://github.com/gitrubio/prueba-grafos.git
+   cd prueba-grafos
    ```
  Instalar dependencias:
 
@@ -51,10 +49,8 @@ npm install
 ```bash
 yarn install
 ```
-2. **Configurar variables de entorno**:
+2. **Iniciar proyecto**:
 
-Crea un archivo .env en la raíz del proyecto.
-Agrega las variables necesarias según example.env.
 Iniciar el proyecto en modo desarrollo:
 
 ```bash
@@ -79,32 +75,41 @@ npm run build: Genera una versión optimizada del proyecto.
 Ejemplo: Para agregar soporte a una minilibreria de componentes:
 
 ```bash
-npm install @headlessui/tailwindcss
 npm install tailwindcss-animate
 ```
 Y agrégalo al archivo de configuración:
 ```javascript
 module.exports = {
-  plugins: [require("tailwindcss-animate"),require('@headlessui/tailwindcss')],
+  plugins: [require("tailwindcss-animate")],
 };
 ```
 
 **Estructura del proyecto:**
 ```css
 src/
-│── api/
+│── assets/
 │   ├── authApi.tsx
 │   ├── cockApi.tsx
 ├── components/
-│   ├── molecules/
-│   │   ├── Header.tsx
-│   │   ├── Button.tsx
-│   ├── organisms/
-│   │   ├── Navbar.tsx
-│   │   ├── UserSection.tsx
+│   ├── ui/
+│   │   ├── Loader.tsx
+│   │   ├── Modal.tsx
+│   │   ├── Popover.tsx
+│   │── Config.tsx
+│   │── CustomNode.tsx
+│   │── Error.tsx
+│   │── SkillTree.tsx
+│── constants/
+│   ├── data.tsx
+│── helpers/
+│   ├── utils.tsx
+│── hooks/
+│   ├── useMinecraft.tsx
+│── store/
+│   ├── minecraft/
+│   ├── index.tsx
 ├── views/
-│   ├── Home.tsx
-│   └── About.tsx
+│   ├── Minecraft.tsx
 ├── App.tsx
 └── main.tsx
 ```

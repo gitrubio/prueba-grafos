@@ -1,0 +1,60 @@
+{
+    "name": "Minecraft",
+    "description": "Una nueva aventura comienza",
+    "image": "https://minecraft.capta.co/Images/Grass_Block.webp",
+    "children": [
+        {
+            "name": "Primeros Pasos",
+            "description": "Recoge madera de un árbol.",
+            "image": "https://minecraft.capta.co/Images/Oak_Log.webp",
+            "children": [
+                {
+                    "name": "Herramientas Básicas",
+                    "description": "Fabrica una mesa de trabajo.",
+                    "image": "https://minecraft.capta.co/Images/Crafting_Table.webp",
+                    "children": [
+                        {
+                            "name": "Manos a la obra",
+                            "description": "Elabora tu primera herramienta.",
+                            "image": "https://minecraft.capta.co/Images/Wooden_Axe.webp",
+                            "children": [
+                                {
+                                    "name": "Cocinando algo rico",
+                                    "description": "Fabrica un horno y cocina un alimento.",
+                                    "image": "https://minecraft.capta.co/Images/Furnace.webp",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Explorador nocturno",
+                                    "description": "Sobrevive tu primera noche sin morir.",
+                                    "image": "https://minecraft.capta.co/Images/Zombie.webp",
+                                    "children": [
+                                        {
+                                            "name": "Maestro del combate",
+                                            "description": "Derrota a un esqueleto con una espada.",
+                                            "image": "https://minecraft.capta.co/Images/Skeleton.webp",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Agricultura Sostenible",
+                    "description": "Planta y cosecha tu primer cultivo.",
+                    "image": "https://minecraft.capta.co/Images/Wheat_Seeds.webp",
+                    "children": [
+                        {
+                            "name": "El poder del pan",
+                            "description": "Fabrica pan con trigo cosechado.",
+                            "image": "https://minecraft.capta.co/Images/Bread.webp",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

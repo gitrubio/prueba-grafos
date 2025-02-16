@@ -1,15 +1,8 @@
+//
+export const DEFAULT_URL = "https://minecraft.capta.co/BaseSkillTree.json";
 
-// categorias de bebidas
-export const CategoryData = [
-    "Cocktail",
-    "Ordinary Drink",
-    "Punch / Party Drink",
-    "Shake",
-    "Other / Unknown",
-    "Cocoa",
-    "Shot",
-    "Coffee / Tea",
-    "Homemade Liqueur",
-    "Beer",
-    "Soft Drink",
-]
+
+export enum SpacingInGraph {
+    X = 80,
+    Y = 100
+ }
