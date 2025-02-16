@@ -51,8 +51,12 @@ yarn install
 ```
 2. **Iniciar proyecto**:
 
+**Nota**: para ejecutar el proyecto en producion necesita configurar la variable de entorno:
+```bash
+  VITE_PRODUCTION=true
+```
 Iniciar el proyecto en modo desarrollo:
-
+ 
 ```bash
 npm run dev
 ```
@@ -87,6 +91,8 @@ module.exports = {
 **Estructura del proyecto:**
 ```css
 src/
+│── api/
+│   ├── minecraftApi.ts
 │── assets/
 │   ├── authApi.tsx
 │   ├── cockApi.tsx
