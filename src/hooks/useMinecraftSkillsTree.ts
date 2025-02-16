@@ -16,7 +16,7 @@ export const useMinecraftSkillTree = () => {
 
       dispatch(setLoading(true));
       
-      const response = await fetch(url,{mode: 'cors'});
+      const response = await fetch(url);
       const data = await response.json();
     
       const normalizedData = normalizeTree(data);

@@ -1,5 +1,5 @@
 //
-export const DEFAULT_URL = "https://minecraft.capta.co/BaseSkillTree.json";
+export const DEFAULT_URL = import.meta.env.VITE_DEFAUL_URL;
 
 
 export enum SpacingInGraph {
