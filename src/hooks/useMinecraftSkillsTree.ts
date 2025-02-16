@@ -5,6 +5,7 @@ import { MinecraftSkillTree } from "@/types/global.types";
 import { DEFAULT_URL } from "@/constants/data";
 import useSound from 'use-sound';
 import xp from '@/assets/sounds/din.mp3';
+import { mineCraftApi } from "@/api/minecraftApi";
 
 export const useMinecraftSkillTree = () => {
   const dispatch = useAppDispatch();
@@ -16,8 +17,7 @@ export const useMinecraftSkillTree = () => {
 
       dispatch(setLoading(true));
       
-      const response = await fetch(url);
-      const data = await response.json();
+      const data = await mineCraftApi.get(url);
     
       const normalizedData = normalizeTree(data);
     
