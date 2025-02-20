@@ -1,7 +1,9 @@
 import { SpacingInGraph } from "@/constants/data";
 import { MinecraftSkillsTreeMap, MinecraftSkillTree, NodePrimary } from "@/types/global.types";
 import {  Node } from "@xyflow/react";
+import ELK from 'elkjs/lib/elk.bundled.js';
 
+const elk = new ELK();
 // Función para normalizar el árbol
 export const normalizeTree = (
   node: NodePrimary,
@@ -28,9 +30,14 @@ export const normalizeTree = (
 };
 
 
-export const convertToReactFlowNodes = (nodes: MinecraftSkillTree[]) => {
+export const convertToReactFlowNodes = async (nodes: MinecraftSkillTree[]) => {
+  const elk = new ELK();
+
   const nodeMap: Map<string, MinecraftSkillsTreeMap> = new Map(
-    nodes.map(node => [node.id, { ...node, children: [] as MinecraftSkillTree[], position: { x: 0, y: 0 } } as MinecraftSkillsTreeMap])
+    nodes.map(node => [
+      node.id,
+      { ...node, children: [] as MinecraftSkillTree[], position: { x: 0, y: 0 } } as MinecraftSkillsTreeMap,
+    ])
   );
 
   // Construcción de relaciones padre-hijo
@@ -40,69 +47,49 @@ export const convertToReactFlowNodes = (nodes: MinecraftSkillTree[]) => {
     }
   });
 
-  // Encontrar nodos raíz (sin parentId)
-  const rootNodes = nodes.filter(node => !node.parentId);
-
-  const levelSpacing = SpacingInGraph.Y; // Espaciado horizontal entre niveles
-  const nodeSpacing = SpacingInGraph.X; // Espaciado vertical entre nodos
-
-  // Función para posicionar los nodos
-  const positionNodes = (node: MinecraftSkillsTreeMap, depth: number, yOffset: number): number => {
-    let childYOffset = yOffset;
-
-    // Posicionar recursivamente los hijos
-    node.children.forEach(child => {
-      childYOffset = positionNodes(child, depth + 1, childYOffset);
-    });
-
-    if (node.children.length > 0) {
-      // Centrar el padre entre sus hijos
-      const minY = Math.min(...node.children.map(child => child.position!.y));
-      const maxY = Math.max(...node.children.map(child => child.position!.y));
-      node.position = { x: depth * levelSpacing, y: (minY + maxY) / 2 };
-    } else {
-      // Asignar posición a nodos hoja
-      node.position = { x: depth * levelSpacing, y: yOffset * nodeSpacing };
-      childYOffset++;
-    }
-
-    return childYOffset;
+  // Construir el grafo para ELK.js
+  const elkGraph = {
+    id: 'root',
+    layoutOptions: {
+      'elk.algorithm': 'layered',
+      'elk.direction': 'RIGHT',
+      'elk.layered.spacing.nodeNodeBetweenLayers': '50',
+      'elk.layered.spacing.nodeNode': '40',
+    },
+    children: nodes.map(node => ({
+      id: node.id,
+      width: 60,
+      height: 100,
+    })),
+    edges: nodes
+      .filter(node => node.parentId)
+      .map(node => ({
+        id: `edge-${node.parentId}-${node.id}`,
+        sources: [node.parentId!],
+        targets: [node.id],
+      })),
   };
 
-  // Asignar posiciones a los nodos raíz
-  let yOffset = 0;
-  rootNodes.forEach(root => {
-    yOffset = positionNodes(nodeMap.get(root.id)!, 0, yOffset);
-  });
+  // Ejecutar el layout de ELK.js
+  const layout = await elk.layout(elkGraph);
 
-  // Convertir nodos a formato de React Flow
-  const flowNodes = Array.from(nodeMap.values()).map(node => ({
+  // Asignar posiciones calculadas
+  const flowNodes = layout.children!.map(node => ({
     id: node.id,
-    data: {
-      id: node.id,
-      name: node.name,
-      description: node.description,
-      image: node.image,
-      parentId: node.parentId,
-      completed: node.completed
-    },
-    position: node.position,
-    sourcePosition: "right",
-    targetPosition: "left",
-    type: "custom",
-    completed: node.completed,
-  } as Node));
+    data: nodeMap.get(node.id)!,
+    position: { x: node.x!, y: node.y! },
+    sourcePosition: 'right',
+    targetPosition: 'left',
+    type: 'custom',
+  }));
 
   // Crear edges de React Flow
-  const edges = nodes
-    .filter(node => node.parentId)
-    .map(node => ({
-      id: `edge-${node.parentId}-${node.id}`,
-      source: node.parentId!,
-      target: node.id,
-      type: "smoothstep",
-      completed: node.completed,
-    }));
+  const edges = layout.edges!.map(edge => ({
+    id: edge.id,
+    source: edge.sources[0],
+    target: edge.targets[0],
+    type: 'smoothstep',
+  }));
 
   return { flowNodes, edges };
 };
