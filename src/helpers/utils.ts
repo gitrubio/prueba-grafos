@@ -1,8 +1,6 @@
-import { SpacingInGraph } from "@/constants/data";
-import { MinecraftSkillsTreeMap, MinecraftSkillTree, NodePrimary } from "@/types/global.types";
-import {  Node } from "@xyflow/react";
-import ELK from 'elkjs/lib/elk.bundled.js';
 
+import { MinecraftSkillsTreeMap, MinecraftSkillTree, NodePrimary } from "@/types/global.types";
+import ELK from 'elkjs/lib/elk.bundled.js';
 const elk = new ELK();
 // Función para normalizar el árbol
 export const normalizeTree = (
@@ -31,7 +29,6 @@ export const normalizeTree = (
 
 
 export const convertToReactFlowNodes = async (nodes: MinecraftSkillTree[]) => {
-  const elk = new ELK();
 
   const nodeMap: Map<string, MinecraftSkillsTreeMap> = new Map(
     nodes.map(node => [
